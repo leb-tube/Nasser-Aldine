@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nasser Aldine Trade & Sourcing | Commercial Representative</title>
+    <style>
+        :root {
+            --primary: #0f2942;
+            --secondary: #1e4b7a;
+            --accent: #d97706;
+            --whatsapp: #25D366;
+            --bg-light: #f8fafc;
+            --text-dark: #1e293b;
+            --text-muted: #64748b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Tahoma, Arial, sans-serif;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            line-height: 1.6;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: #ffffff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 75px;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .lang-btn {
+            background: var(--bg-light);
+            border: 1px solid #cbd5e1;
+            padding: 6px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 600;
+            color: var(--primary);
+            transition: 0.2s;
+        }
+
+        .lang-btn:hover {
+            background: var(--primary);
+            color: #fff;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: #ffffff;
+            padding: 90px 0;
+            text-align: center;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+        }
+
+        .hero h1 {
+            font-size: 2.6rem;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            max-width: 680px;
+            margin: 0 auto 32px;
+            color: #e2e8f0;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+        }
+
+        .btn-whatsapp {
+            background-color: var(--whatsapp);
+            color: #ffffff;
+        }
+
+        .btn-email {
+            background-color: #ffffff;
+            color: var(--primary);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: var(--text-muted);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.03);
+            border: 1px solid #e2e8f0;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 1.25rem;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: #ffffff;
+            padding: 70px 0;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .contact-box {
+            background: var(--bg-light);
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+            border: 1px solid #e2e8f0;
+        }
+
+        .contact-details {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 25px;
+        }
+
+        .contact-item {
+            background: #ffffff;
+            padding: 15px 25px;
+            border-radius: 10px;
+            border: 1px solid #cbd5e1;
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .contact-item:hover {
+            border-color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: #cbd5e1;
+            text-align: center;
+            padding: 25px 0;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 2rem; }
+            .nav-content { flex-direction: column; height: auto; padding: 15px 0; gap: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-content">
+            <a href="#" class="logo">Nasser Aldine <span>Trade & Sourcing</span></a>
+            <button class="lang-btn" onclick="toggleLang()" id="langBtn">العربية</button>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <span class="badge" data-en="Commercial Representative" data-ar="ممثل تجاري ووسيط توريد">Commercial Representative</span>
+            <h1 data-en="Nasser Aldine Trade & Sourcing" data-ar="ناصر الدين للتجارة والتوريد">Nasser Aldine Trade & Sourcing</h1>
+            <p data-en="Your trusted partner for global product sourcing, supplier verification, and commercial representation across regional and international markets." 
+               data-ar="شريكك الموثوق لتوريد المنتجات العالمية، التحقق من الموردين، والتمثيل التجاري في الأسواق الإقليمية والدولية.">
+               Your trusted partner for global product sourcing, supplier verification, and commercial representation across regional and international markets.
+            </p>
+            <div class="cta-group">
+                <a href="https://wa.me/96170290428" target="_blank" class="btn btn-whatsapp">
+                    <span>💬</span> <span data-en="Chat on WhatsApp" data-ar="تواصل عبر واتساب">Chat on WhatsApp</span>
+                </a>
+                <a href="mailto:lifenasser85@gmail.com" class="btn btn-email">
+                    <span>✉️</span> <span data-en="Send Email" data-ar="أرسل بريداً إلكترونياً">Send Email</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="services">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-en="Our Core Services" data-ar="خدماتنا الأساسية">Our Core Services</h2>
+                <p data-en="Bridging the gap between reliable manufacturers and growing businesses" 
+                   data-ar="نربط المصانع الموثوقة بالشركات الباحثة عن الجودة والنمو">
+                   Bridging the gap between reliable manufacturers and growing businesses
+                </p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-icon">🌐</div>
+                    <h3 data-en="Global Sourcing" data-ar="التوريد العالمي">Global Sourcing</h3>
+                    <p data-en="Identifying vetted factories and suppliers to secure competitive pricing and high-quality products tailored to your specifications." 
+                       data-ar="البحث عن مصانع وموردين موثوقين لتأمين أفضل الأسعار وأعلى مستويات الجودة وفق مواصفاتك.">
+                       Identifying vetted factories and suppliers to secure competitive pricing and high-quality products tailored to your specifications.
+                    </p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🤝</div>
+                    <h3 data-en="Commercial Representation" data-ar="التمثيل التجاري">Commercial Representation</h3>
+                    <p data-en="Representing international brands and suppliers in local markets, expanding distribution channels, and closing B2B deals." 
+                       data-ar="تمثيل العلامات التجارية والموردين الدوليين في الأسواق المحلية، وتوسيع قنوات التوزيع وإبرام الصفقات.">
+                       Representing international brands and suppliers in local markets, expanding distribution channels, and closing B2B deals.
+                    </p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">📦</div>
+                    <h3 data-en="Negotiation & Logistics" data-ar="التفاوض والمتابعة اللوجستية">Negotiation & Logistics</h3>
+                    <p data-en="Managing contract terms, quality inspections, and shipment coordination from the factory floor to your warehouse." 
+                       data-ar="إدارة شروط العقود، فحص الجودة، وتنسيق الشحن من المصنع وحتى وصول البضائع إلى مستودعاتك.">
+                       Managing contract terms, quality inspections, and shipment coordination from the factory floor to your warehouse.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact">
+        <div class="container">
+            <div class="contact-box">
+                <h2 data-en="Get in Touch" data-ar="تواصل معنا مباشرة">Get in Touch</h2>
+                <p data-en="Ready to source your next product or discuss commercial representation? Reach out directly." 
+                   data-ar="جاهز لبدء طلبية توريد جديدة أو مناقشة فرص التمثيل التجاري؟ تواصل معنا الآن.">
+                   Ready to source your next product or discuss commercial representation? Reach out directly.
+                </p>
+                <div class="contact-details">
+                    <a href="https://wa.me/96170290428" target="_blank" class="contact-item" dir="ltr">
+                        <span>📱</span> +961 70 290 428
+                    </a>
+                    <a href="mailto:lifenasser85@gmail.com" class="contact-item" dir="ltr">
+                        <span>📧</span> lifenasser85@gmail.com
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Nasser Aldine Trade & Sourcing. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        let currentLang = 'en';
+        function toggleLang() {
+            currentLang = currentLang === 'en' ? 'ar' : 'en';
+            document.documentElement.lang = currentLang;
+            document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+            document.getElementById('langBtn').textContent = currentLang === 'en' ? 'العربية' : 'English';
+
+            document.querySelectorAll('[data-en]').forEach(el => {
+                el.textContent = el.getAttribute(`data-${currentLang}`);
+            });
+        }
+    </script>
+</body>
+</html>
