@@ -802,7 +802,18 @@
         function sendViaEmail() {
             const subject = encodeURIComponent(`Business Inquiry - ${document.getElementById('inquiryType').value}`);
             const body = encodeURIComponent(getFormattedMessage().replace(/\*/g, ''));
-            window.location.href = `mailto:lifenasser85@gmail.com?subject=${subject}&body=${body}`;
+            const email = 'lifenasser85@gmail.com';
+
+            // التحقق مما إذا كان الزائر يستخدم هاتفاً أو كمبيوتر
+            const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+            if (isMobile) {
+                window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+            } else {
+                // فتح صفحة إنشاء رسالة جديدة في Gmail مباشرة على الكمبيوتر
+                const gmailUrl = `https://google.com{email}&su=${subject}&body=${body}`;
+                window.open(gmailUrl, '_blank');
+            }
         }
     </script>
 </body>
