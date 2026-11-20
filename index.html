@@ -799,28 +799,19 @@
             window.open(`https://wa.me/96170290428?text=${text}`, '_blank');
         }
 
-   function sendViaEmail() {
+ function sendViaEmail() {
     const rawMessage = getFormattedMessage().replace(/\*/g, '');
     const subject = 'Business Inquiry - ' + document.getElementById('inquiryType').value;
     const email = 'lifenasser85@gmail.com';
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    const lang = (typeof currentLang !== 'undefined') ? currentLang : 'en';
 
     if (isMobile) {
-        const copyText = 'To: ' + email + '\nSubject: ' + subject + '\n\n' + rawMessage;
+        const mailtoUrl = 'mailto:' + encodeURIComponent(email)
+            + '?subject=' + encodeURIComponent(subject)
+            + '&body=' + encodeURIComponent(rawMessage);
 
-        if (navigator.clipboard) {
-            navigator.clipboard.writeText(copyText).then(function() {
-                alert(lang === 'ar'
-                    ? 'تم نسخ تفاصيل الطلب وعنوان البريد (' + email + ') إلى الحافظة.\nيمكنك لصقها وإرسالها من أي تطبيق بريد تفضله.'
-                    : 'Inquiry details and email (' + email + ') copied to clipboard.\nYou can paste and send them from your preferred email app.');
-            }).catch(function() {
-                alert(lang === 'ar' ? 'البريد الإلكتروني للتواصل: ' + email : 'Contact Email: ' + email);
-            });
-        } else {
-            alert(lang === 'ar' ? 'البريد الإلكتروني للتواصل: ' + email : 'Contact Email: ' + email);
-        }
-        return;
+        window.location.href = mailtoUrl;
+        return; // ← ضروري: أوقف التنفيذ هنا على الهاتف
     }
 
     // سطح المكتب
