@@ -801,17 +801,15 @@
 
                 function sendViaEmail() {
             const rawMessage = getFormattedMessage().replace(/\*/g, '');
-            const subject = encodeURIComponent(`Business Inquiry - ${document.getElementById('inquiryType').value}`);
+            const subject = encodeURIComponent('Business Inquiry - ' + document.getElementById('inquiryType').value);
             const body = encodeURIComponent(rawMessage);
             const email = 'lifenasser85@gmail.com';
 
-            // 1. نسخ نص الرسالة تلقائياً كنسخة احتياطية للزائر
             if (navigator.clipboard) {
-                navigator.clipboard.writeText(rawMessage).catch(() => {});
+                navigator.clipboard.writeText(rawMessage).catch(function() {});
             }
 
-            // 2. فتح صفحة إنشاء رسالة جديدة في Gmail مباشرة (تعمل على الكمبيوتر والهواتف)
-            const gmailUrl = `https://google.com{email}&su=${subject}&body=${body}`;
+            const gmailUrl = 'https://google.com' + email + '&su=' + subject + '&body=' + body;
             window.open(gmailUrl, '_blank');
         }
 
