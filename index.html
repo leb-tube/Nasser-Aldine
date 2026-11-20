@@ -799,29 +799,43 @@
             window.open(`https://wa.me/96170290428?text=${text}`, '_blank');
         }
 
-        function sendViaEmail() {
+       function sendViaEmail() {
     const rawMessage = getFormattedMessage().replace(/\*/g, '');
     const subject = 'Business Inquiry - ' + document.getElementById('inquiryType').value;
     const email = 'lifenasser85@gmail.com';
 
+    // 1. نسخ نص الرسالة تلقائياً كنسخة احتياطية لجميع الأجهزة
     if (navigator.clipboard) {
         navigator.clipboard.writeText(rawMessage).catch(function() {});
     }
 
-    const gmailUrl = 'https://mail.google.com/mail/?view=cm&fs=1'
-        + '&to=' + encodeURIComponent(email)
-        + '&su=' + encodeURIComponent(subject)
-        + '&body=' + encodeURIComponent(rawMessage);
+    // 2. التحقق مما إذا كان الزائر يتصفح من هاتف ذكي أو جهاز لوحي
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
-    // Use an anchor click — avoids some popup blockers and works better on desktop
-    const a = document.createElement('a');
-    a.href = gmailUrl;
-    a.target = '_blank';
-    a.rel = 'noopener noreferrer';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
+    if (isMobile) {
+        // الهواتف الذكية: فتح تطبيق البريد الافتراضي عبر mailto
+        const mailtoUrl = 'mailto:' + encodeURIComponent(email)
+            + '?subject=' + encodeURIComponent(subject)
+            + '&body=' + encodeURIComponent(rawMessage);
+
+        window.location.href = mailtoUrl;
+    } else {
+        // أجهزة الكمبيوتر: فتح نافذة إنشاء رسالة Gmail مباشرة عبر رابط ديناميكي لتفادي الحظر
+        const gmailUrl = 'https://mail.google.com/mail/?view=cm&fs=1'
+            + '&to=' + encodeURIComponent(email)
+            + '&su=' + encodeURIComponent(subject)
+            + '&body=' + encodeURIComponent(rawMessage);
+
+        const a = document.createElement('a');
+        a.href = gmailUrl;
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+    }
 }
+
     </script>
 </body>
 </html>
