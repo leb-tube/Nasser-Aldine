@@ -799,20 +799,29 @@
             window.open(`https://wa.me/96170290428?text=${text}`, '_blank');
         }
 
-                function sendViaEmail() {
-            const rawMessage = getFormattedMessage().replace(/\*/g, '');
-            const subject = encodeURIComponent('Business Inquiry - ' + document.getElementById('inquiryType').value);
-            const body = encodeURIComponent(rawMessage);
-            const email = 'lifenasser85@gmail.com';
+        function sendViaEmail() {
+    const rawMessage = getFormattedMessage().replace(/\*/g, '');
+    const subject = 'Business Inquiry - ' + document.getElementById('inquiryType').value;
+    const email = 'lifenasser85@gmail.com';
 
-            if (navigator.clipboard) {
-                navigator.clipboard.writeText(rawMessage).catch(function() {});
-            }
+    if (navigator.clipboard) {
+        navigator.clipboard.writeText(rawMessage).catch(function() {});
+    }
 
-            const gmailUrl = 'https://google.com' + email + '&su=' + subject + '&body=' + body;
-            window.open(gmailUrl, '_blank');
-        }
+    const gmailUrl = 'https://mail.google.com/mail/?view=cm&fs=1'
+        + '&to=' + encodeURIComponent(email)
+        + '&su=' + encodeURIComponent(subject)
+        + '&body=' + encodeURIComponent(rawMessage);
 
+    // Use an anchor click — avoids some popup blockers and works better on desktop
+    const a = document.createElement('a');
+    a.href = gmailUrl;
+    a.target = '_blank';
+    a.rel = 'noopener noreferrer';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+}
     </script>
 </body>
 </html>
